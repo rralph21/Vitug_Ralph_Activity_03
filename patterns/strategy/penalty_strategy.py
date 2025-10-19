@@ -28,6 +28,6 @@ class PenaltyStrategy(PaymentStrategy):
 
 
         return (
-            f"Penalty of ${penalty:.2f} ({self.penalty_rate:.0%}) applied."
+            f"Penalty of ${penalty:.2f} ({self.penalty_rate:.0%}) applied. "
             f"Total of ${total:.2f} paid to {payee.name}."
         )

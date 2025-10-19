@@ -24,5 +24,5 @@ class PartialPaymentStrategy(PaymentStrategy):
         account.deduct_balance(payee, amount_to_pay)
         
         remaining = round(amount - amount_to_pay, 2)
-        return(f"Partial payment of ${amount_to_pay:.2f} made to {payee.name}."
+        return(f"Partial payment of ${amount_to_pay:.2f} made to {payee.name}. "
                f"Remaining balance: ${remaining:.2f}")
