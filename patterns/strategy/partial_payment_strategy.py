@@ -15,14 +15,22 @@ class PartialPaymentStrategy(PaymentStrategy):
 
     """
 
-    def __init__(self, percentage: float = 0.5) -> None:
-        self.percentage = max(0.0, min(percentage, 1.0))
-
     def process_payment(self, account: BillingAccount, payee: Payee,
                         amount: float) -> str:
-        amount_to_pay = round(amount * self.percentage, 2)
-        account.deduct_balance(payee, amount_to_pay)
+        """
+        Applies the payment to the correct bill
+        """
+        amount = float(amount)
+
+        account.deduct_balance(payee, amount)
+
+        new_balance = account.get_balance(payee)
+
+        if new_balance is not None and new_balance <= 0.0:
+            return (f"Processed payment of ${amount:.2f}. "
+            + "New balance: $0.00. ")
         
-        remaining = round(amount - amount_to_pay, 2)
-        return(f"Partial payment of ${amount_to_pay:.2f} made to {payee.name}. "
-               f"Remaining balance: ${remaining:.2f}")
+        shown_balance = 0.0 if new_balance is None else new_balance
+        return (
+            f"Partial payment of ${amount:.2f} accepted. "
+            f"New balance: ${shown_balance:.2f}. ")

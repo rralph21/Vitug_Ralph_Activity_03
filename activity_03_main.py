@@ -38,7 +38,7 @@ def strategy():
     
     # 3. Create a Payment object with a PartialPaymentStrategy payment 
     # strategy.
-    partial_payment = PaymentProcess(PartialPaymentStrategy(0.5))
+    partial_payment = PaymentProcess(PartialPaymentStrategy())
 
     # 4. Use the Payment object's pay_bill method to pay the TELEPHONE 
     # bill with an amount that does not pay off the entire balance shown
@@ -49,7 +49,7 @@ def strategy():
     # payment for the TELEPHONE bill with an amount that pays off the 
     # remainder of the balance - print the result of the pay_bill 
     # method.
-   
+    print(partial_payment.pay_bill(account, Payee.TELEPHONE, 50.0))
 
     # 6. Print the BillingAccount object to show the updated balances 
     # for each of the payees.
