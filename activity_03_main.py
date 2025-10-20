@@ -53,6 +53,7 @@ def strategy():
 
     # 6. Print the BillingAccount object to show the updated balances 
     # for each of the payees.
+    print(f"Updated balances: \n{account}")
     
 
 if __name__ == "__main__":
