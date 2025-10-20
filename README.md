@@ -22,6 +22,7 @@ In this activity, we were tasked to learn Strategy pattern to be applied in a bi
     It allows the same pay_bill method to be called but it behaves differently (Polymorphism).
 
 3. Encapsulation
-    BillingAccount class is encapsulated.
+    BillingAccount class is encapsulated where balances are kept private
+    and only for view.
 
 
